@@ -1,6 +1,7 @@
 package com.pdi.EventMgmt.Service;
 
 import com.pdi.EventMgmt.Entity.CategoryEntity;
+import com.pdi.EventMgmt.Exception.CategoryNotFoundException;
 import com.pdi.EventMgmt.Model.CategoryModel;
 import com.pdi.EventMgmt.Model.CategoryResponse;
 import com.pdi.EventMgmt.Repository.CategoryRepository;
@@ -28,7 +29,7 @@ public class CategoryServiceImpl implements CategoryService{
 
     @Override
     public CategoryResponse getCategoryById(int categoryId) {
-        CategoryEntity category = categoryRepository.findByCategoryId(categoryId).orElseThrow();
+        CategoryEntity category = categoryRepository.findByCategoryId(categoryId).orElseThrow(() -> new CategoryNotFoundException("No category with that id"));
         return new CategoryResponse(category.getCategoryId(), category.getCategoryName());
     }
 

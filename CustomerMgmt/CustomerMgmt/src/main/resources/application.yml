@@ -1,9 +1,9 @@
 server:
-  port: 8022
+  port: 8021
 
 spring:
   application:
-    name: EventMgmt
+    name: CustomerMgmt
   config:
     import: configserver:http://localhost:9296
 #  eureka:
@@ -15,7 +15,7 @@ spring:
 #      prefer-ip-address: true
 
   datasource:
-    url: jdbc:mysql://localhost:3306/event_management_db
+    url: jdbc:mysql://localhost:3306/customer_management_db
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
